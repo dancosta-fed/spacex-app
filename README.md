@@ -1,34 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Task Front-end | React, Next, Graphql, Chakra-UI;
 
-## Getting Started
+Criação de três páginas para consumo da API da SpaceX com Graphql;
 
-First, run the development server:
+## Regras
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- A estilização da interface deve ser priorizada pelo Chakra. Em casos que se sinta mais confortável criando sua própria estilização, **deve-se** utilizar styled-components;
+- Os dados exibidos em uma página devem ser obtidos utilizando os métodos de Server Side Rendering fornecidos pelo **Next**, à fins de melhor rankeamento de SEO.
+- Todas as requisições à API devem ser realizadas utilizando o Graphql, visando uma otimização dos dados recebidos.
+- A interface deve ser simples, agradável e de fácil usabilidade.
+- Deve-se seguir, a todo momento, a regra de componentização de toda a aplicação.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Funcionamento
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- A interface deve ser composta por três páginas:
+  - Home:
+    - Opção para ver informações da empresa;
+    - Opção para buscar por foguetes;
+  - Informações da empresa:
+    - Todos os conteúdos citados abaixo sobre a empresa, em uma listagem sem pesquisa;
+  - Busca de foguetes:
+    - Input para busca com sugestões (buscadas da API). Ao selecionar uma opção no Input, listar as informações citadas abaixo sobre o foguete selecionado.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+**Dados para listagem**:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+    - Informações globais da empresa SpaceX:
+        - CEO;
+        - COO;
+        - Ano de fundação;
+        - Valuation;
+        - Número de funcionários;
+    - Listagem de um foguete:
+        - Nome;
+        - Descrição;
+        - Status de atividade;
+        - Empresa responsável;
+        - Custo por lançamento;
 
-## Learn More
+## Tools
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Apollo Graphql SpaceX: [Playground](https://studio.apollographql.com/public/SpaceX-pxxbxen)
