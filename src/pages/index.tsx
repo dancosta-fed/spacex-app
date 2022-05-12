@@ -10,6 +10,9 @@ export default function Home() {
   const {error, loading, data} = useQuery(LOAD_INFO)
   const company = data['company']
 
+  console.log(data['company'], ' outra opção: ', data.company)
+
+
   return (
     <>
       <Header />
