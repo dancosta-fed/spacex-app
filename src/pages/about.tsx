@@ -1,27 +1,83 @@
 import React from 'react'
-import { Heading, Center, Box, Text } from '@chakra-ui/react'
 
+import { LOAD_INFO } from '../GraphQL/queries'
+import { useQuery } from '@apollo/client'
+
+import { Heading, Box, Text, Flex, ListItem, List, ListIcon, Tag, Center } from '@chakra-ui/react'
 import { Header } from '../components/Header'
-import Link from 'next/link'
+
+import { GiSpaceSuit } from 'react-icons/gi'
+import { SiSpacex } from 'react-icons/si'
 
 export default function About() {
+
+  const {error, loading, data} = useQuery(LOAD_INFO)
+  const company = data['company']
+
   return (
     <>
       <Header />
-      <Center>
-        <Heading as='h3' mt={8}>About SpaceX</Heading>
-        <Box borderRadius={8} bg='purple.50' w='80vw' mt={8} p={4}>
-          <Heading>Saiba mais sobre a SpaceX</Heading>
-          <Box mt={10}>
-            <Text>
-              {/* {company.ceo} é o CEO da SpaceX. A empresa foi fundada em {company.founded}. */}
-            </Text>
-            <Text>
-              Para saber mais sobre a empresa... <Link href='/about'>clique aqui</Link>!
-            </Text>
+      <Flex flexDirection='column' align='center'>
+
+        <Heading as='h3' mt={8}>About {company.name}</Heading>
+       
+          <Box borderRadius={8} bg='purple.50' w='80vw' mt={8} p={4}>
+
+            <Heading>A empresa</Heading>
+
+            <List spacing={3} ms={6} mt={4}>
+              <ListItem>
+                <Flex alignItems="center">
+                  <ListIcon as={GiSpaceSuit} color='green.500' fontSize={34}/>
+                  <Tag color='purple.500' >CEO:</Tag> {company.ceo} 
+                </Flex>
+              </ListItem>
+
+              <ListItem>
+                <Flex alignItems="center">
+                  <ListIcon as={GiSpaceSuit} color='green.500' fontSize={34}/>
+                  <Tag color='purple.500' >COO:</Tag> {company.coo} 
+                </Flex>
+              </ListItem>
+            
+              <ListItem>
+                <Flex alignItems="center">
+                  <ListIcon as={SiSpacex} color='green.500' fontSize={34}/>
+                  <Tag color='purple.500' >Ano de fundação:</Tag> {company.founded} 
+                </Flex>
+              </ListItem>
+  
+              <ListItem>
+                <Flex alignItems="center">
+                  <ListIcon as={SiSpacex} color='green.500' fontSize={34}/>
+                  <Tag color='purple.500' >Valuation:</Tag> {company.valuation} 
+                </Flex>
+              </ListItem>
+
+              <ListItem>
+                <Flex alignItems="center">
+                  <ListIcon as={SiSpacex} color='green.500' fontSize={34}/>
+                  <Tag color='purple.500' >No. Funcionários:</Tag> {company.employees} 
+                </Flex>
+              </ListItem>
+            </List>
           </Box>
-        </Box>
-      </Center>
+      </Flex>
     </>
   )
 }
+
+
+// - Informações globais da empresa SpaceX:
+// - CEO;
+// - COO;
+// - Ano de fundação;
+// - Valuation;
+// - Número de funcionários;
+
+// - Listagem de um foguete:
+// - Nome;
+// - Descrição;
+// - Status de atividade;
+// - Empresa responsável;
+// - Custo por lançamento;
