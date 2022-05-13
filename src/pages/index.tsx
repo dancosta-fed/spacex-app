@@ -1,34 +1,67 @@
-import { Heading, Center, Box, Text } from '@chakra-ui/react'
+import Router from 'next/router'
+
+import { Heading, Center, Box, Text, Flex, Button } from '@chakra-ui/react'
 import { useQuery } from "@apollo/client"
 import { Header } from '../components/Header'
 import Link from 'next/link'
 import { LOAD_INFO } from '../GraphQL/queries'
+import { Footer } from '../components/Footer'
+
 
 
 export default function Home() {
  
   const {error, loading, data} = useQuery(LOAD_INFO)
-  const company = data['company']
+  // const company = data['company']
 
-  console.log(data['company'], ' outra opção: ', data.company)
 
+  function handleRedirectToSearch() {
+    Router.push('/search')
+  }
 
   return (
     <>
       <Header />
       <Center>
-        <Box borderRadius={8} bg='purple.50' w='80vw' mt={8} p={4}>
-          <Heading>Saiba mais sobre a SpaceX</Heading>
-          <Box mt={10}>
-            <Text>
-              {company.ceo} é o CEO da {company.name}. A empresa foi fundada em {company.founded}.
-            </Text>
-            <Text>
-              Para saber mais sobre a empresa... <Link href='/about'>clique aqui</Link>!
-            </Text>
+        <Flex flexDirection="column" ms={4} w="60%">
+          <Box borderRadius={8} bg='purple.50' mt={8} p={4}>
+            <Heading>Saiba mais sobre a SpaceX</Heading>
+            <Box mt={10}>
+              <Text>
+                MUSK é o CEO da SpaceX. A empresa foi fundada em XXXX.
+              </Text>
+              <Text>
+                Para saber mais sobre a empresa... <Link href='/about'>clique aqui</Link>!
+              </Text>
+            </Box>
           </Box>
-        </Box>
+
+          <Box borderRadius={8} bg='purple.50' mt={8} p={4}>
+            <Heading>Quer conhecer os Foguetes da SpaceX?</Heading>
+            <Box mt={10}>
+              <Text>
+                Para saber mais informações e detalhes sobre qualquer foguete clique abaixo:
+              </Text>
+              <Center mt={4}>
+                <Button colorScheme='red' onClick={handleRedirectToSearch}>Search Rockets</Button>
+              </Center>
+            </Box>
+          </Box>
+        </Flex>
       </Center>
+
+      <Flex >
+        <Box             
+          pos="fixed"
+          right={6}
+          bottom={14}
+        >
+          <Link 
+            href='/about'>Sobre</Link>
+        </Box>
+      </Flex>
+
+      <Footer />
     </>
   )
 }

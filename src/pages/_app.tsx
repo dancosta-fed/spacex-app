@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from '../../styles/theme'
-import { ApolloClient, InMemoryCache, gql, ApolloProvider, HttpLink, from } from '@apollo/client'
+import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -36,5 +36,3 @@ export default function MyApp({ Component, pageProps }: AppProps ) {
     </ApolloProvider>
   )
 }
-
- 
