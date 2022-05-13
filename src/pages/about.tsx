@@ -7,19 +7,25 @@ import { Heading, Box, Text, Flex, ListItem, List, ListIcon, Tag, Spacer } from 
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 
-import { GiConsoleController, GiSpaceSuit } from 'react-icons/gi'
+import { GiSpaceSuit } from 'react-icons/gi'
 import { SiSpacex } from 'react-icons/si'
 import { FaSpaceShuttle } from 'react-icons/fa'
 import * as CurrencyFormat from 'react-currency-format'
 
 export default  function  About() {
 
-  //  const { error, loading, data } = useQuery(LOAD_INFO)
+   const { error, loading, data } = useQuery(LOAD_INFO)
 
-  // const [business, setBusiness] = useState()
-  // const [rocket, setRocket] = useState()
+  // const [business, setBusiness] = useState([])
+  // // const [rocket, setRocket] = useState([])
+
+  // useEffect(() => {
+  //   setBusiness(data.business)
+  //   // console.log(data)
+  // },[data])
 
 
+  console.log(data)
 
   return (
     <>

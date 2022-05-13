@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import Router from 'next/router'
 
 import { Heading, Center, Box, Text, Flex, Button } from '@chakra-ui/react'
@@ -9,19 +10,39 @@ import { Footer } from '../components/Footer'
 
 
 
+
 export default function Home() {
  
   const {error, loading, data} = useQuery(LOAD_INFO)
-  // const company = data['company']
+
+  const [business, setBusiness] = useState([])
+  const [rocket, setRocket] = useState([])
+
+ const companyData = async () => {
+  const spacex = await data
+  const empresa = await spacex.company 
+  const foguete = await spacex.rockets
+
+    // setBusiness(empresa)
+    // setRocket(foguete)
+ }
+
+//  companyData()
 
 
   function handleRedirectToSearch() {
     Router.push('/search')
   }
 
+
   return (
     <>
       <Header />
+
+      {/* {business.map(value =>{
+        return <Text>{value.ceo}</Text>
+      })} */}
+{/*       
       <Center>
         <Flex flexDirection="column" ms={4} w="60%">
           <Box borderRadius={8} bg='purple.50' mt={8} p={4}>
@@ -48,7 +69,7 @@ export default function Home() {
             </Box>
           </Box>
         </Flex>
-      </Center>
+      </Center> */}
 
       <Flex >
         <Box             
