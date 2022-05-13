@@ -30,31 +30,29 @@ export default function Home() {
     Router.push('/search')
   }
 
+  function handleRedirectToAbout() {
+    Router.push('/about')
+  }
+
 
   return (
     <>
       <Header />
-
-      <Box>
-        {rocket.map((val)=> {
-          return(
-            <Text>{val.name}</Text>
-          )
-        })}
-      </Box>
-
-{/*       
+     
       <Center>
         <Flex flexDirection="column" ms={4} w="60%">
           <Box borderRadius={8} bg='purple.50' mt={8} p={4}>
-            <Heading>Saiba mais sobre a SpaceX</Heading>
+            <Heading>Saiba mais sobre a {data.company.name}</Heading>
             <Box mt={10}>
               <Text>
-                MUSK é o CEO da SpaceX. A empresa foi fundada em XXXX.
+                {data.company.ceo} é o CEO da {data.company.name}. A empresa foi fundada em {data.company.founded}.
               </Text>
               <Text>
-                Para saber mais sobre a empresa... <Link href='/about'>clique aqui</Link>!
+                Para saber mais sobre a empresa...
               </Text>
+              <Center mt={4}>
+                <Button colorScheme='red' onClick={handleRedirectToAbout}>Saiba mais</Button>
+              </Center>
             </Box>
           </Box>
 
@@ -65,12 +63,12 @@ export default function Home() {
                 Para saber mais informações e detalhes sobre qualquer foguete clique abaixo:
               </Text>
               <Center mt={4}>
-                <Button colorScheme='red' onClick={handleRedirectToSearch}>Search Rockets</Button>
+                <Button colorScheme='red' onClick={handleRedirectToSearch}>Busque Foguetes</Button>
               </Center>
             </Box>
           </Box>
         </Flex>
-      </Center> */}
+      </Center> 
 
       <Flex >
         <Box             

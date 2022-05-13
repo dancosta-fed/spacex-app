@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import {  Text, Box, Center, Flex, Grid, GridItem, Input, Link, UnorderedList, ListIcon, ListItem, Spacer } from "@chakra-ui/react"
+import {  Text, Box, Center, Flex, Grid, GridItem, Input, Link, UnorderedList, ListIcon, ListItem, Spacer, Heading } from "@chakra-ui/react"
 import { FaSearch } from "react-icons/fa"
 import { Footer } from "../components/Footer"
 import { Header } from "../components/Header"
@@ -91,6 +91,9 @@ useEffect(() => {
         </Center>
 
         {/* Rocket List */}
+        <Center>
+          <Heading>Listagem de Foguetes...</Heading>
+        </Center>
         <Center>
           <Grid templateColumns='repeat(2, 1fr)' gap={4}> 
 
