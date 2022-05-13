@@ -16,19 +16,15 @@ export default function Home() {
   const {error, loading, data} = useQuery(LOAD_INFO)
 
   const [business, setBusiness] = useState([])
+
   const [rocket, setRocket] = useState([])
 
- const companyData = async () => {
-  const spacex = await data
-  const empresa = await spacex.company 
-  const foguete = await spacex.rockets
-
-    // setBusiness(empresa)
-    // setRocket(foguete)
- }
-
-//  companyData()
-
+  useEffect(() => {
+    if(data){
+      setBusiness(data.company)
+      setRocket(data.rockets)
+    }
+  },[data])
 
   function handleRedirectToSearch() {
     Router.push('/search')
@@ -39,9 +35,14 @@ export default function Home() {
     <>
       <Header />
 
-      {/* {business.map(value =>{
-        return <Text>{value.ceo}</Text>
-      })} */}
+      <Box>
+        {rocket.map((val)=> {
+          return(
+            <Text>{val.name}</Text>
+          )
+        })}
+      </Box>
+
 {/*       
       <Center>
         <Flex flexDirection="column" ms={4} w="60%">

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { LOAD_INFO } from '../GraphQL/queries'
 import { useQuery } from '@apollo/client'
 
-import { Heading, Box, Text, Flex, ListItem, List, ListIcon, Tag, Spacer } from '@chakra-ui/react'
+import { Heading, Box, Text, Flex, ListItem, List, ListIcon, Tag, Spacer, GridItem, UnorderedList } from '@chakra-ui/react'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 
@@ -25,7 +25,7 @@ export default  function  About() {
   // },[data])
 
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <>
@@ -87,52 +87,53 @@ export default  function  About() {
               {/* FOGUETES */}
               <Box>
                 <Heading>Listagem de Foguete</Heading>
-
-                <List spacing={3} ms={6} mt={4} gap={4}>
-                  <ListItem>
-                      <Flex alignItems="center">
-                        <ListIcon as={FaSpaceShuttle} color='green.500' fontSize={34}/>
-                        <Tag color='purple.500' >Nome do Foguete:</Tag> 
-                        XXXX 
-                      </Flex>
-                    </ListItem>
-
-                    <ListItem>
-                      <Flex alignItems="center">
-                        <ListIcon as={SiSpacex} color='green.500' fontSize={34}/>
-                        <Tag color='purple.500' >Descrição:</Tag> XXXX
-                      </Flex>
-                    </ListItem>
-
-                    <ListItem>
-                      <Flex alignItems="center">
-                        <ListIcon as={SiSpacex} color='green.500' fontSize={34}/>
-                        <Tag color='purple.500' >Status de Atividade:</Tag> 
-                        XXXX 
-                      </Flex>
-                    </ListItem>
-
-                    <ListItem>
-                    <Flex alignItems="center">
-                      <ListIcon as={SiSpacex} color='green.500' fontSize={34}/>
-                      <Tag color='purple.500'>Valuation:</Tag>  
-                      <CurrencyFormat 
-                        value={1000} 
-                        displayType={'text'} 
-                        thousandSeparator={true} 
-                        prefix={'$'} 
-                      />
-                    </Flex>
-                  </ListItem>
-
-                    <ListItem>
-                      <Flex alignItems="center">
-                        <ListIcon as={SiSpacex} color='green.500' fontSize={34}/>
-                        <Tag color='purple.500' >Empresa responsável:</Tag> 
-                        xxxxx
-                      </Flex>
-                    </ListItem>
-                </List>
+                {data['rockets'][0].map((rocket, key) =>{ 
+                  return(
+                    <GridItem key={key} bg="white" p={4} m={4} borderRadius={10} boxShadow='xl'>
+                    <UnorderedList spacing={3} ms={6} mt={4} gap={4} styleType="none">
+                      <ListItem>
+                          <ListIcon as={FaSpaceShuttle} color='purple.900' fontSize={34}/>
+                          <Flex alignItems="center">
+                            <Text as='i' mr={4} color="purple.400">Nome do Foguete:</Text> 
+                            <Text color="gray.500">{rocket.name}</Text>
+                          </Flex>
+                        </ListItem>
+  
+                        <ListItem>
+                          <Flex alignItems="center">
+                            <Flex flexDirection="column">
+                              <Text as='i' mr={4} color="purple.400">Descrição:</Text>
+                              <Text color="gray.500">
+                                {rocket.description}
+                              </Text>
+                            </Flex>
+                          </Flex>
+                        </ListItem>
+  
+                        <ListItem>
+                        <Flex alignItems="center">
+                          <Text as='i' mr={4} color="purple.400">Custo de Lançamento:</Text>  
+                          <CurrencyFormat 
+                            value={rocket.cost_per_launch} 
+                            color="white"
+                            displayType={'text'} 
+                            thousandSeparator={true} 
+                            prefix={'$'} 
+                          />
+                        </Flex>
+                      </ListItem>
+  
+                        <ListItem>
+                          <Flex alignItems="center">
+                            <Text as='i' mr={4} color="purple.400">Empresa responsável:</Text> 
+                            <Text color="gray.500">{rocket.company}</Text>
+                          </Flex>
+                        </ListItem>
+                    </UnorderedList>
+                  </GridItem>
+                  )
+                })}
+              
               </Box>
 
             </Flex>
