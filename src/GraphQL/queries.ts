@@ -11,6 +11,7 @@ export const LOAD_INFO = gql `
       name
     }
     rockets {
+      id
       company
       name
       description

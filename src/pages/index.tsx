@@ -38,11 +38,10 @@ export default function Home() {
   return (
     <>
       <Header />
-     
       <Center>
         <Flex flexDirection="column" ms={4} w="60%">
           <Box borderRadius={8} bg='purple.50' mt={8} p={4}>
-            <Heading>Saiba mais sobre a {data.company.name}</Heading>
+            <Heading>Saiba mais sobre a SpaceX</Heading>
             <Box mt={10}>
               <Text>
                 {data.company.ceo} é o CEO da {data.company.name}. A empresa foi fundada em {data.company.founded}.
