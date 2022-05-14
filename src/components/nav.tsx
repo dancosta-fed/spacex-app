@@ -2,8 +2,6 @@ import { Flex, Box } from '@chakra-ui/react'
 import Link from 'next/link'
 import React from 'react'
 
-// import { SiSpacex } from 'react-icons/si'
-
 export const Nav = () => {
   return (
     <>

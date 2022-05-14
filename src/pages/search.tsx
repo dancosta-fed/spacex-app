@@ -27,7 +27,6 @@ import { useQuery } from "@apollo/client"
 export default function Search() {
 
  // API
-
 const { error, loading, data } = useQuery(LOAD_INFO)
 const [rocket, setRocket] = useState([])
 
@@ -54,6 +53,10 @@ useEffect(() => {
   return (
     <>
       <Header />
+
+      <Center mt={12}>
+          <Heading>Listagem de Foguetes...</Heading>
+      </Center>
 
         {/* Search bar */}
         <Center mb={12}>
@@ -87,12 +90,7 @@ useEffect(() => {
           </Flex>
         </Center>
 
-
-
         {/* Rocket List */}
-        <Center>
-          <Heading>Listagem de Foguetes...</Heading>
-        </Center>
         <Center>
           <Grid templateColumns='repeat(2, 1fr)' gap={4}> 
           {rocket.filter((item) => {

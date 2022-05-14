@@ -3,12 +3,22 @@ import Link from 'next/link'
 import { LOAD_INFO } from '../GraphQL/queries'
 import { useQuery } from '@apollo/client'
 
-import { Heading, Box, Text, Flex, ListItem, List, ListIcon, Tag, Spacer, GridItem, UnorderedList, Center } from '@chakra-ui/react'
+import { 
+  Heading,
+  Box, 
+  Text, 
+  Flex, 
+  ListItem, 
+  ListIcon, 
+  Spacer, 
+  GridItem, 
+  UnorderedList, 
+  Center 
+} from '@chakra-ui/react'
+
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 
-import { GiSpaceSuit } from 'react-icons/gi'
-import { SiSpacex } from 'react-icons/si'
 import { FaSpaceShuttle } from 'react-icons/fa'
 import * as CurrencyFormat from 'react-currency-format'
 

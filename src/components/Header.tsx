@@ -2,7 +2,6 @@ import { Flex, Heading } from '@chakra-ui/react'
 import React from 'react'
 import { Nav } from './nav'
 
-// import { SiSpacex } from 'react-icons/si'
 
 export const Header = () => {
   return (
