@@ -1,6 +1,17 @@
 import { useEffect, useState } from 'react'
 
-import {  Text, Box, Center, Flex, Grid, GridItem, Link, UnorderedList, ListIcon, ListItem, Spacer, Heading, Input } from "@chakra-ui/react"
+import {  
+  Text, 
+  Center,
+  Flex, 
+  Grid, 
+  GridItem, 
+  UnorderedList, 
+  ListIcon, 
+  ListItem, 
+  Heading, 
+  Input 
+} from "@chakra-ui/react"
 
 import { Footer } from "../components/Footer"
 import { Header } from "../components/Header"
@@ -88,7 +99,7 @@ useEffect(() => {
                   const searchTerm = value.toLowerCase()
                   const name = item.name.toLowerCase()
 
-                  return searchTerm && name.startsWith(searchTerm) && name !== searchTerm
+                  return searchTerm && name.startsWith(searchTerm)
             })
             .map((value, key) =>{            
               return(
@@ -99,7 +110,6 @@ useEffect(() => {
                   borderRadius={10} 
                   boxShadow='xl'
                   cursor='pointer'
-                  onClick={() => onSearch(value.name)}
                   _hover={{
                     border: '1px solid'
                   }}
