@@ -1,26 +1,25 @@
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { LOAD_INFO } from '../GraphQL/queries'
-import { useQuery } from '@apollo/client'
-
-import { 
+import { useQuery } from "@apollo/client";
+import {
+  Box,
+  Center,
+  Flex,
+  GridItem,
   Heading,
-  Box, 
-  Text, 
-  Flex, 
-  ListItem, 
-  ListIcon, 
-  Spacer, 
-  GridItem, 
-  UnorderedList, 
-  Center 
-} from '@chakra-ui/react'
+  ListIcon,
+  ListItem,
+  Spacer,
+  Text,
+  UnorderedList,
+} from "@chakra-ui/react";
+import Link from "next/link";
+import { Footer } from "../components/Footer";
 
-import { Header } from '../components/Header'
-import { Footer } from '../components/Footer'
+import { Header } from "../components/Header";
+import { LOAD_INFO } from "../Services/GraphQL/queries";
 
 import { FaSpaceShuttle } from 'react-icons/fa'
 import * as CurrencyFormat from 'react-currency-format'
+
 
 export default  function  About() {
 

@@ -15,25 +15,24 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) {
     console.log(`[Network error]: ${networkError}`);
   }
-})
+});
 
 const link = from([
   errorLink,
-  new HttpLink({uri: 'https://api.spacex.land/graphql/'})
-])
+  new HttpLink({ uri: "https://api.spacex.land/graphql/" }),
+]);
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: link
-})
+  link: link,
+});
 
-
-export default function MyApp({ Component, pageProps }: AppProps ) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <ChakraProvider theme={theme}>
         <Component {...pageProps} />
       </ChakraProvider>
     </ApolloProvider>
-  )
+  );
 }

@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react'
-
-import {  
-  Text, 
+import { useQuery } from "@apollo/client";
+import {
   Center,
   Flex, 
   Grid, 
@@ -11,7 +9,8 @@ import {
   ListItem, 
   Heading, 
   Input, 
-  Box
+  Box,
+  Text
 } from "@chakra-ui/react"
 
 import { Footer } from "../components/Footer"
@@ -20,8 +19,9 @@ import { Header } from "../components/Header"
 import { FaSearch, FaSpaceShuttle } from 'react-icons/fa'
 import * as CurrencyFormat from 'react-currency-format'
 
-import { LOAD_INFO } from '../GraphQL/queries'
-import { useQuery } from "@apollo/client"
+import { LOAD_INFO } from '../Services/GraphQL/queries'
+
+import { useState } from "react";
 
 
 
@@ -55,8 +55,8 @@ if(loading) {
   const [value, setValue] = useState('')
 
   const onChange = (event: any) => {
-    setValue(event.target.value)
-  }
+    setValue(event.target.value);
+  };
 
   const onSearch = (searchTerm: string) => {
     //  Api to search results
