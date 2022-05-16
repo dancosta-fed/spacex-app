@@ -1,8 +1,14 @@
-import { AppProps } from 'next/app'
-import { ChakraProvider } from '@chakra-ui/react'
-import { theme } from '../../styles/theme'
-import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client'
-import { onError } from '@apollo/client/link/error'
+import {
+  ApolloClient,
+  ApolloProvider,
+  from,
+  HttpLink,
+  InMemoryCache,
+} from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
+import { ChakraProvider } from "@chakra-ui/react";
+import { AppProps } from "next/app";
+import { theme } from "../styles/theme";
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -15,25 +21,24 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) {
     console.log(`[Network error]: ${networkError}`);
   }
-})
+});
 
 const link = from([
   errorLink,
-  new HttpLink({uri: 'https://api.spacex.land/graphql/'})
-])
+  new HttpLink({ uri: "https://api.spacex.land/graphql/" }),
+]);
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: link
-})
+  link: link,
+});
 
-
-export default function MyApp({ Component, pageProps }: AppProps ) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <ChakraProvider theme={theme}>
         <Component {...pageProps} />
       </ChakraProvider>
     </ApolloProvider>
-  )
+  );
 }
