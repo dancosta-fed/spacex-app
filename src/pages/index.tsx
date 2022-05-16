@@ -13,27 +13,33 @@ import { Footer } from '../components/Footer'
 
 export default function Home() {
  
-  const {error, loading, data} = useQuery(LOAD_INFO)
+  const { loading, data } = useQuery(LOAD_INFO)
 
-  const [business, setBusiness] = useState([])
 
-  const [rocket, setRocket] = useState([])
 
-  useEffect(() => {
-    if(data){
-      setBusiness(data.company)
-      setRocket(data.rockets)
-    }
-  },[data])
-
-  function handleRedirectToSearch() {
-    Router.push('/search')
+  if(loading) {
+    return(
+      <>
+        <Header />
+        <Center>
+          <Flex flexDirection="column" ms={4} w="60%">
+            <Box borderRadius={8} bg='purple.50' mt={8} p={4}>
+              <Heading>Só um minutinho...</Heading>
+              <Box mt={10}>
+                <Text>
+                  Carregando..
+                </Text>
+              </Box>
+            </Box>
+          </Flex>
+        </Center>
+      </>
+    )
   }
 
-  function handleRedirectToAbout() {
-    Router.push('/about')
-  }
-
+  
+  if(data){
+    const {ceo, name, founded} = data.company
 
   return (
     <>
@@ -44,13 +50,13 @@ export default function Home() {
             <Heading>Saiba mais sobre a SpaceX</Heading>
             <Box mt={10}>
               <Text>
-                {data.company.ceo} é o CEO da {data.company.name}. A empresa foi fundada em {data.company.founded}.
+                {ceo} é o CEO da {name}. A empresa foi fundada em {founded}.
               </Text>
               <Text>
                 Para saber mais sobre a empresa...
               </Text>
               <Center mt={4}>
-                <Button colorScheme='red' onClick={handleRedirectToAbout}>Saiba mais</Button>
+                <Button colorScheme='red' onClick={() => Router.push('/about')}>Saiba mais</Button>
               </Center>
             </Box>
           </Box>
@@ -62,7 +68,7 @@ export default function Home() {
                 Para saber mais informações e detalhes sobre qualquer foguete clique abaixo:
               </Text>
               <Center mt={4}>
-                <Button colorScheme='red' onClick={handleRedirectToSearch}>Busque Foguetes</Button>
+                <Button colorScheme='red' onClick={() => Router.push('/search')}>Busque Foguetes</Button>
               </Center>
             </Box>
           </Box>
@@ -83,4 +89,5 @@ export default function Home() {
       <Footer />
     </>
   )
+  }
 }
